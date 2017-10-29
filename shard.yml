@@ -1,0 +1,13 @@
+name: iniq
+version: 0.1.0
+
+authors:
+  - Tijn Schuurmans <tijn@tijnschuurmans.nl>
+
+targets:
+  iniq:
+    main: src/iniq.cr
+
+crystal: 0.23.1
+
+license: MIT
