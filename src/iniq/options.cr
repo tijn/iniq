@@ -42,7 +42,7 @@ module Iniq
         end
 
         parser.on("-h", "--help", "Display this screen") do
-          puts parser
+          STDERR.puts parser
           exit
         end
 
@@ -54,14 +54,14 @@ module Iniq
       options.query = ARGV
       return options
     rescue error : OptionParser::InvalidOption
-      STDERR.puts error
+      ERR.error error
       exit 1
     end
 
     private def self.fetch_filename!
       STDIN.tty? ? ARGV.shift : ""
     rescue IndexError
-      STDERR.puts "No input given"
+      ERR.error "no input given"
       exit 1
     end
   end

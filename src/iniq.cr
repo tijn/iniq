@@ -4,34 +4,27 @@ require "option_parser"
 
 module Iniq
   OPTIONS = Options.parse!
+  ERR.progname = "iniq"
+  ERR.level = Logger::Severity::WARN
 
-  def self.info(*string)
-    STDERR.puts *string if OPTIONS.verbose?
-  end
-
-  def self.read_input
+  def self.input
     if STDIN.tty?
-      info "reading #{OPTIONS.filename}"
-      File.read(OPTIONS.filename)
+      ERR.info "reading #{OPTIONS.filename}"
+      IniStream.open(OPTIONS.filename)
     else
-      info "reading from stdin"
-      contents = [] of String
-      while s = STDIN.gets
-        contents << s
-      end
-      contents.join("\n")
+      ERR.info "reading from stdin"
+      IniStream.new(STDIN)
     end
   end
 
-  def self.read_ini
-    INI.parse(read_input)
+  def self.query(q = OPTIONS.query)
+    QueryFactory.parse(q)
   end
 
   def self.perform_query
-    ini = read_ini
-    puts Query.new(ini, OPTIONS.query).perform
+    query.process(input)
   rescue error : KeyError
-    info error.to_s.gsub(" hash key", " key")
+    ERR.error error.to_s.gsub(" hash key", " key")
     exit OPTIONS.not_found_status
   end
 
