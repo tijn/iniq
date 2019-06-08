@@ -1,2 +1,2 @@
 require "spec"
-require "../src/iniq"
+require "../src/iniq/*"
