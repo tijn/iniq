@@ -1,10 +1,18 @@
 # iniq
 
-TODO: Write a description here
+Grab values or complete sections from INI filies on the command line with ease.
+
+Since the output is a sanitized version of the input you may also use it as a code beautifier. 
 
 ## Installation
 
-TODO: Write installation instructions here
+```
+git clone git@github.com:tijn/iniq.git
+cd iniq
+crystal build src/iniq.cr
+```
+
+This will get you a binary called `iniq` that you can run. And you can throw it somewhere in a directory from your $PATH of course; `/usr/local/bin` for example.
 
 ## Usage
 
@@ -34,10 +42,6 @@ Examples:
     -h, --help                       Display this screen
     -v, --verbose                    Verbose output
 ```
-
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
