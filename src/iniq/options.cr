@@ -15,7 +15,7 @@ module Iniq
 
     def self.parse!
       options = Options.new
-      OptionParser.parse! do |parser|
+      OptionParser.parse do |parser|
         parser.banner =
           "Usage: iniq [OPTION]... INI-FILE KEY\n" \
           "       iniq [OPTION]... INI-FILE \"[SECTION]\" KEY\n" \
