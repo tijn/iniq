@@ -6,7 +6,7 @@ module Iniq
     end
 
     def to_s(io)
-      io << "[#{@name}]"
+      io << "[#{name}]".colorize(:cyan).mode(:bold)
     end
   end
 end

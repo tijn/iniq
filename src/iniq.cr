@@ -1,6 +1,9 @@
 require "./iniq/*"
 require "ini"
 require "option_parser"
+require "colorize"
+
+Colorize.on_tty_only!
 
 module Iniq
   OPTIONS = Options.parse!

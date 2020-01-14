@@ -6,7 +6,7 @@ module Iniq
     end
 
     def to_s(io)
-      io << "#{@key}=#{@value}"
+      io << @key.colorize(:blue).mode(:bold) << '=' << @value.colorize(:green)
     end
   end
 end

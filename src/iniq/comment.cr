@@ -6,7 +6,7 @@ module Iniq
     end
 
     def to_s(io)
-      io << "; #{@text}"
+      io << "; #{@text}".colorize(:light_gray).mode(:dim)
     end
   end
 end
